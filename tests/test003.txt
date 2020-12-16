@@ -1,10 +1,17 @@
-==251328== Heapusage - https://github.com/d99kris/heapusage
-==251328== 
-==251328== HEAP SUMMARY:
-==251328==     in use at exit: 0 bytes in 0 blocks
-==251328==   total heap usage: 7 allocs, 7 frees, 122 bytes allocated
-==251328==    peak heap usage: 110 bytes allocated
-==251328== 
-==251328== LEAK SUMMARY:
-==251328==    definitely lost: 0 bytes in 0 blocks
-==251328== 
+==16158== Heapusage - https://github.com/d99kris/heapusage
+==16158== 
+==16158== HEAP SUMMARY:
+==16158==     in use at exit: 24 bytes in 1 blocks
+==16158==   total heap usage: 7 allocs, 6 frees, 106 bytes allocated
+==16158==    peak heap usage: 94 bytes allocated
+==16158== 
+==16158== 24 bytes in 1 block(s) are lost, originally allocated at:
+==16158==    at 0x0000000102fa9d5b: malloc_wrap + 43
+==16158==    at 0x00007fff202f8daa: operator new(unsigned long) + 26
+==16158==    at 0x0000000102f95f3e: main + 414
+==16158==    at 0x00007fff2034d631: start + 1
+==16158==    at 0x0000000000000001: 
+==16158== 
+==16158== LEAK SUMMARY:
+==16158==    definitely lost: 24 bytes in 1 blocks
+==16158== 

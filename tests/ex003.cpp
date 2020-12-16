@@ -2,6 +2,8 @@
 #include <string>
 #include <memory>
 #include <cstring>
+#include <map>
+#include <iostream>
 
 /**
  * @brief Simple class for testing purposes.
@@ -9,6 +11,15 @@
 class Simple {
     public:
         Simple(const std::string& hello) : _hello(hello){}
+        void run(void)
+        {
+            std::shared_ptr<int> a(new int(5)); // 1 allocation
+        }
+        friend std::ostream& operator<<(std::ostream& out,const Simple& s)
+        {
+            out << s._hello;
+            return out;
+        }
     private:
         std::string _hello;
 };
@@ -51,9 +62,20 @@ int main() {
     char * arg_char = string_to_char(arg);  // 1 allocation
     Simple * _hello = new Simple(arg_char); // 1 allocation
 
-    delete arg_char;
-    (void)_hello;
+    _hello->run(); // 1 allocation
+
+    std::cout << *_hello << std::endl;
+
+    delete[] arg_char;
+
     // do not free: delete _hello;
+
+    /* Iterators */
+    std::map<std::string,int> my_map{{"a",1},{"b",2}};
+    for(std::map<std::string,int>::const_iterator it = my_map.cbegin(); it != my_map.cend(); ++it)
+    {
+        std::cout << it->first << " : " << it->second << std::endl;
+    }
 
     return EXIT_SUCCESS;
 }
