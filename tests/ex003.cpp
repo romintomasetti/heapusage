@@ -52,7 +52,8 @@ int main() {
     Simple * _hello = new Simple(arg_char); // 1 allocation
 
     delete arg_char;
-    delete _hello;
+    (void)_hello;
+    // do not free: delete _hello;
 
     return EXIT_SUCCESS;
 }
